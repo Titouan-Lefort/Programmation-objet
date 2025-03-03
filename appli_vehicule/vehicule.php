@@ -1,6 +1,7 @@
 <?php
 
-class Vehicule{
+class Vehicule
+{
 
     public $id;
     public $marque;
@@ -21,7 +22,8 @@ public function __construct(array $row = []) {
 }
 
 public static function all(){
-    include('lien_sql.php');
+    require_once('Bdd.php');
+    $pdo=Bdd::PDO();
     if (!isset($pdo)){
         echo "erreur de connexion";
     }
@@ -30,7 +32,7 @@ public static function all(){
     $result=$temp->fetchAll();
     $vehicules=[];
     foreach ($result as $row){
-        $vehicules[] = new Vehicule($row);
+        $vehicules[] = new Vehicule($row); 
     }
     return $vehicules;
 }

@@ -1,5 +1,6 @@
 <?php
-    include("lien_sql.php");
+    include("Bdd.php");
+    $pdo=Bdd::PDO();
     session_start();
     $validation=0;
     $_SESSION["admin"] = 0;
@@ -40,7 +41,7 @@
                 </form>";
             }
         if ($validation == 1){
-            echo "<a href='voiture.php'>Voitures</a>";
+            header('Location: voiture.php');
         }
         
     

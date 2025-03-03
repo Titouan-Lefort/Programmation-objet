@@ -1,17 +1,13 @@
 <?php 
-include("lien_sql.php");
+include("Bdd.php");
+$pdo=Bdd::PDO();
 
 if (isset($_REQUEST["id"])){
     $sql="SELECT * FROM voitures WHERE id_voiture=".$_REQUEST["id"];
     $temp = $pdo->query($sql);
     $modifier = $temp->fetch();
 }
-
-
-
 ?>
-
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -22,7 +18,6 @@ if (isset($_REQUEST["id"])){
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
 <?php
     if($_REQUEST["action"] == "modifier"){
         echo"
@@ -53,8 +48,6 @@ if (isset($_REQUEST["id"])){
                 <input name ='bouton' type='submit' value='ajouter'>
             </form>";
     }
-
-
 ?>
 <script src="script.js"></script>
 </body>
